@@ -1,14 +1,61 @@
+.agbalumo-regular {
+  font-family: "Agbalumo", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.inter {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+
+
 body {
     margin: 0px;
+    display: flex;
+    justify-content: center;
 }
 
 #eggImage {
-    width: 100px;
-    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    height: 40%;
     background-image: url(/Images/Egg.png);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.control {
+    padding-top: 20px;    
+    text-align: center;
+    
+}
+
+label, h1 {
+    font-family: "Agbalumo", system-ui;
+    font-size: 36px;
+}
+
+#styleValue, #weightValue {
+    font-family: "Inter", sans-serif;
+}
+
+.buttons {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.check, .add {
+    background-color: #B7A9F7;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
