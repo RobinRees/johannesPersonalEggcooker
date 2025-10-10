@@ -1,0 +1,28 @@
+body {
+    margin: 0px;
+}
+
+#eggImage {
+    width: 100px;
+    height: 100px;
+    background-image: url(/Images/Egg.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #B7A9F7;   /* färg på sliderbanan */
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  background: #B7A9F7;   /* färg på "knoppen" */
+}
+
+input[type="range"]::-moz-range-track {
+  background: #B7A9F7;
+}
+
+input[type="range"]::-moz-range-thumb {
+  background: #B7A9F7;
+}
