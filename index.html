@@ -1,49 +1,85 @@
 <!DOCTYPE html>
 <html lang="sv">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Johannes Eggboiler</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Agbalumo&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-</head>
-<body>
-  <div id="main">
-    <h1>Johannes Eggboiler</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Johannes Eggboiler</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Agbalumo&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="main">
+      <h1>Johannes Eggboiler</h1>
 
-    <div class="egg"></div>
-    <div id="eggImage">
-
-    </div>
-    <div class="control">
-      <label for="weight">Weight</label>
-      <div class="slider-row">
-        <input type="range" id="weight" min="40" max="80" value="55.5" step="0.1">
-        
+      <div class="egg"></div>
+      <div id="eggImage">
+        <div id="multipleEggsBox">+</div>
       </div>
-      <span id="weightValue">55,5g</span>
-    </div>
-
-    <div class="control">
-      <label for="style">Style</label>
-      <div class="slider-row">
-        <input type="range" id="style" min="1" max="3" value="3" step="1">
-        
+      <div class="control">
+        <label for="weight">Weight</label>
+        <div class="slider">
+          <input
+            type="range"
+            id="weight"
+            min="40"
+            max="80"
+            value="55.5"
+            step="0.1"
+          />
+        </div>
+        <span id="weightValue">55,5g</span>
       </div>
-      <span id="styleValue">Hardboiled</span>
+
+      <div class="control">
+        <label for="style">Style</label>
+        <div class="slider">
+          <input type="range" id="style" min="1" max="3" value="3" step="1" />
+        </div>
+        <span id="styleValue">Hardboiled</span>
+      </div>
+
+      <div class="buttons">
+        <button class="start">✔</button>
+        <button class="add">+</button>
+      </div>
+
+      <p class="altitude">⚠️ High altitude</p>
+      <div id="eggMenu">
+        <div class="menuHeader">
+          <span>My eggs</span>
+          <button id="closeMenu">X</button>
+        </div>
+        <div id="eggList"></div>
+      </div>
+
+      <div id="namePopup">
+        <div class="popupContent">
+          <label for="eggNameInput">Name your egg 🥚</label>
+          <input
+            type="text"
+            id="eggNameInput"
+            maxlength="10"
+            placeholder="Ex. Egg S"
+          />
+          <div class="popupButtons">
+            <button id="cancelName">Cancel</button>
+            <button id="saveName">OK</button>
+          </div>
+        </div>
+      </div>
+
+      <script src="index.js"></script>
     </div>
-
-    <div class="buttons">
-      <button class="check">✔</button>
-      <button class="add">+</button>
-    </div>
-
-    <p class="altitude">⚠️ High altitude</p>
-
-    <script src="index.js"></script>
-  </div>
+  </body>
+</html>

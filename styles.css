@@ -4,7 +4,6 @@
   font-style: normal;
 }
 
-
 .inter {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
@@ -12,64 +11,200 @@
   font-style: normal;
 }
 
-
-
 body {
-    margin: 0px;
-    display: flex;
-    justify-content: center;
+  margin: 0px;
+  display: flex;
+  justify-content: center;
 }
 
 #eggImage {
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
-    height: 40%;
-    background-image: url(/Images/Egg.png);
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  height: 40%;
+  background-image: url(/Images/Egg.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#multipleEggsBox {
+  width: 50px;
+  height: 50px;
+  background-color: #b7a9f7;
+  border-radius: 50%;
+  text-align: center;
 }
 
 .control {
-    padding-top: 20px;    
-    text-align: center;
-    
+  padding-top: 20px;
+  text-align: center;
 }
 
-label, h1 {
-    font-family: "Agbalumo", system-ui;
-    font-size: 36px;
+label,
+h1 {
+  font-family: "Agbalumo", system-ui;
+  font-size: 36px;
 }
 
-#styleValue, #weightValue {
-    font-family: "Inter", sans-serif;
+#styleValue,
+#weightValue {
+  font-family: "Inter", sans-serif;
 }
 
 .buttons {
-    padding-top: 20px;
-    text-align: center;
+  padding-top: 20px;
+  text-align: center;
 }
 
-.check, .add {
-    background-color: #B7A9F7;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+.check,
+.add {
+  background-color: #b7a9f7;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
-  background: #B7A9F7;   /* färg på sliderbanan */
+  background: #b7a9f7; /* färg på sliderbanan */
 }
 
 input[type="range"]::-webkit-slider-thumb {
-  background: #B7A9F7;   /* färg på "knoppen" */
+  background: #b7a9f7; /* färg på "knoppen" */
 }
 
 input[type="range"]::-moz-range-track {
-  background: #B7A9F7;
+  background: #b7a9f7;
 }
 
 input[type="range"]::-moz-range-thumb {
-  background: #B7A9F7;
+  background: #b7a9f7;
 }
+
+/* Menu */
+
+.egg-menu {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: -100%; /* gömd från början */
+  background: white;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  max-height: 70vh;
+  overflow-y: auto;
+  transition: bottom 0.3s ease;
+}
+
+.egg-menu.active {
+  bottom: 0; /* glider upp */
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.egg-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f7f7f7;
+  border-radius: 12px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.egg-info {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.egg-number {
+  font-weight: bold;
+}
+
+.trash-btn {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+.name-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.name-popup.active {
+  display: flex;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 300px;
+  text-align: center;
+}
+
+.popup-content input {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.popup-buttons button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#cancelName {
+  background: #ccc;
+}
+
+#saveName {
+  background: #7e57c2;
+  color: white;
+}
+
+
