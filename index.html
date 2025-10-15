@@ -17,86 +17,95 @@
     />
   </head>
   <body>
-    <!-- === SETUP VY === -->
-    <div id="main">
-      <h1>Johannes Eggboiler</h1>
+    <!-- 📱 Mobilram -->
+    <div class="phone-frame">
+      <div class="phone-screen">
+        <!-- === SETUP VY === -->
+        <div id="main">
+          <h1>Johannes Eggboiler</h1>
 
-      <div id="eggImage">
-        <div id="multipleEggsBox">+</div>
-      </div>
-      <div class="control">
-        <label for="weight">Weight</label>
-        <div class="slider">
-          <input
-            type="range"
-            id="weight"
-            min="40"
-            max="80"
-            value="55.5"
-            step="0.1"
-          />
-        </div>
-        <span id="weightValue">55,5g</span>
-      </div>
+          <div class="egg"></div>
+          <div id="eggImage">
+            <div id="multipleEggsBox">+</div>
+          </div>
 
-      <div class="control">
-        <label for="style">Style</label>
-        <div class="slider">
-          <input type="range" id="style" min="1" max="3" value="3" step="1" />
-        </div>
-        <span id="styleValue">Hardboiled</span>
-      </div>
+          <div class="control">
+            <label for="weight">Weight</label>
+            <div class="slider">
+              <input
+                type="range"
+                id="weight"
+                min="40"
+                max="80"
+                value="55.5"
+                step="0.1"
+              />
+            </div>
+            <span id="weightValue">55,5g</span>
+          </div>
 
-      <div class="buttons">
-        <button class="start">✔</button>
-        <button class="add">+</button>
-      </div>
+          <div class="control">
+            <label for="style">Style</label>
+            <div class="slider">
+              <input type="range" id="style" min="1" max="3" value="3" step="1" />
+            </div>
+            <span id="styleValue">Hardboiled</span>
+          </div>
 
-      <p class="altitude">⚠️ High altitude</p>
-      <div id="eggMenu">
-        <div class="menuHeader">
-          <span>My eggs</span>
-          <button id="closeMenu">X</button>
-        </div>
-        <div id="eggList"></div>
-      </div>
+          <div class="buttons">
+            <button class="start">✔</button>
+            <button class="add">+</button>
+          </div>
 
-      <div id="namePopup">
-        <div class="popupContent">
-          <label for="eggNameInput">Name your egg 🥚</label>
-          <input
-            type="text"
-            id="eggNameInput"
-            maxlength="10"
-            placeholder="Ex. Egg S"
-          />
-          <div class="popupButtons">
-            <button id="cancelName">Cancel</button>
-            <button id="saveName">OK</button>
+
+          <!-- Meny med ägg -->
+          <div id="eggMenu">
+            <div class="menuHeader">
+              <span>My eggs</span>
+              <button id="closeMenu">X</button>
+            </div>
+            <div id="eggList"></div>
+          </div>
+
+          <!-- Popup för namn -->
+          <div id="namePopup">
+            <div class="popupContent">
+              <label for="eggNameInput">Name your egg 🥚</label>
+              <input
+                type="text"
+                id="eggNameInput"
+                maxlength="10"
+                placeholder="Ex. Egg S"
+              />
+              <div class="popupButtons">
+                <button id="cancelName">Cancel</button>
+                <button id="saveName">OK</button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <!-- === TIMER VY === -->
-    <div id="timerView" style="display: none">
-      <h1>Kokar ägg...</h1>
+        <!-- === TIMER VY === -->
+        <div id="timerView" style="display: none">
+          <h1>Kokar ägg...</h1>
 
-      <div class="eggTimerImage">
-        <img src="/Images/Egg.png" alt="Egg timer" class="timer-egg-img" />
-      </div>
+          <div class="eggTimerImage">
+            <img src="/Images/Egg.png" alt="Egg timer" class="timer-egg-img" />
+          </div>
 
-      <div class="nextUp">
-        <h2>Näst på tur:</h2>
-        <p id="nextEggName">–</p>
-        <div id="nextEggTime">00:00</div>
-      </div>
+          <div class="next-up">
+            <h2>Näst på tur:</h2>
+            <p id="nextEggName">–</p>
+            <div id="nextEggTime">00:00</div>
+          </div>
 
-      <div id="timerList" class="timerList"></div>
+          <div id="timerList" class="timerList"></div>
 
-      <div class="timer-controls">
-        <button id="pauseTimer">⏸</button>
-        <button id="stopTimer">✖</button>
+          <div class="timer-controls">
+            <button id="pauseTimer">⏸</button>
+            <button id="stopTimer">✖</button>
+          </div>
+        </div>
       </div>
     </div>
 

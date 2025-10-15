@@ -19,6 +19,7 @@ body {
   background-color: #fff;
   color: #000;
   font-family: "Inter", sans-serif;
+  background-color: #ddd; /* fin bakgrund runt telefonen */
 }
 
 h1,
@@ -254,6 +255,12 @@ input[type="range"]::-moz-range-thumb {
   align-items: center;
   justify-content: center;
   padding: 20px;
+
+    background-image: url("/Images/bubbles-19008.gif");
+  background-size: cover;       
+  background-position: center;  
+  background-repeat: no-repeat; 
+  background-attachment: fixed;
 }
 
 .timer-egg-img {
@@ -343,4 +350,132 @@ input[type="range"]::-moz-range-thumb {
   font-size: 20px;
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* === Telefonram === */
+.phone-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e0e0e0;
+  min-height: 100vh;
+}
+
+.phone-screen {
+  background: white;
+  width: 375px;                /* typisk iPhone-bredd */
+  height: 750px;               /* ungefärlig höjd */
+  border-radius: 40px;
+  box-shadow: 0 0 0 12px black;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Notch */
+.phone-screen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 30px;
+  background: black;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  z-index: 2;
+}
+
+/* Innehåll */
+#main, #timerView {
+  padding-top: 60px; /* så inget hamnar i notch */
+  padding-bottom: 20px;
+  flex: 1;
+  overflow-y: auto;
+  text-align: center;
+}
+
+#timerView h1 {
+  font-family: "Agbalumo", system-ui;
+  font-size: 28px;
+  margin-top: 20px;
+}
+
+/* Äggbild timer */
+.eggTimerImage img {
+  max-width: 140px;
+  width: 60%;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.next-up {
+  margin-top: 10px;
+}
+
+#nextEggTime {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+/* Timerlista */
+#timerList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.timer-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f3f0ff;
+  padding: 10px 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  font-family: "Inter", sans-serif;
+}
+
+.timer-item strong {
+  font-size: 16px;
+}
+
+.timer-item .style-text {
+  font-size: 14px;
+  color: #444;
+}
+
+.timer-item .time-text {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Timerkontroller */
+.timer-controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.timer-controls button {
+  background: #b7a9f7;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.timer-controls button:hover {
+  background: #9c88e3;
 }
