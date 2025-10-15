@@ -21,7 +21,6 @@
     <div id="main">
       <h1>Johannes Eggboiler</h1>
 
-      <div class="egg"></div>
       <div id="eggImage">
         <div id="multipleEggsBox">+</div>
       </div>
@@ -80,25 +79,24 @@
     </div>
 
     <!-- === TIMER VY === -->
-    <div id="timerView" style="display: none;">
-      <h1>Johannes Eggboiler</h1>
-      <div class="egg-timer-image">
-        <img src="Images/Egg.png" alt="Egg" />
+    <div id="timerView" style="display: none">
+      <h1>Kokar ägg...</h1>
+
+      <div class="eggTimerImage">
+        <img src="/Images/Egg.png" alt="Egg timer" class="timer-egg-img" />
       </div>
 
-      <div class="next-up">
-        <h2>Näst på tur</h2>
-        <strong id="nextEggName">—</strong>
-        <div id="nextEggTime" class="time">00:00</div>
+      <div class="nextUp">
+        <h2>Näst på tur:</h2>
+        <p id="nextEggName">–</p>
+        <div id="nextEggTime">00:00</div>
       </div>
 
-      <div id="upcomingEggs" class="upcoming-eggs">
-        <!-- Kommande ägg läggs till här med JS -->
-      </div>
+      <div id="timerList" class="timerList"></div>
 
       <div class="timer-controls">
-        <button id="stopBtn">✕</button>
-        <button id="pauseBtn">⏸</button>
+        <button id="pauseTimer">⏸</button>
+        <button id="stopTimer">✖</button>
       </div>
     </div>
 

@@ -15,8 +15,20 @@ const eggNameInput = document.getElementById("eggNameInput");
 const cancelNameBtn = document.getElementById("cancelName");
 const saveNameBtn = document.getElementById("saveName");
 
-let eggs = [];
+// Timer view
+const timerView = document.getElementById("timerView");
+const timerList = document.getElementById("timerList");
+const pauseTimerBtn = document.getElementById("pauseTimer");
+const stopTimerBtn = document.getElementById("stopTimer");
 
+const nextEggName = document.getElementById("nextEggName");
+const nextEggTime = document.getElementById("nextEggTime");
+
+let eggs = [];
+let timerInterval = null;
+let timerRunning = false;
+
+// === SLIDERS ===
 weightSlider.addEventListener("input", () => {
   const value = parseFloat(weightSlider.value).toFixed(1);
   weightValue.textContent = `${value}g`;
@@ -26,30 +38,20 @@ styleSlider.addEventListener("input", () => {
   const styleNumber = parseInt(styleSlider.value);
   let styleText = "";
 
-  if (styleNumber === 1) {
-    styleText = "softboiled";
-  }
-  if (styleNumber === 2) {
-    styleText = "Medium";
-  }
-  if (styleNumber === 3) {
-    styleText = "Hardboiled";
-  }
+  if (styleNumber === 1) styleText = "Softboiled";
+  if (styleNumber === 2) styleText = "Mediumboiled";
+  if (styleNumber === 3) styleText = "Hardboiled";
 
   styleValue.textContent = styleText;
 });
 
+// === BERÄKNA KOKTID ===
 function calculateBoilTime(weight, style) {
   let baseTime;
-  if (style === "softboiled") {
-    baseTime = 240;
-  } else if (style === "Medium") {
-    baseTime = 420;
-  } else if (style === "Hardboiled") {
-    baseTime = 600;
-  } else {
-    baseTime = 420;
-  }
+  if (style === "Softboiled") baseTime = 240;
+  else if (style === "Mediumboiled") baseTime = 420;
+  else if (style === "Hardboiled") baseTime = 600;
+  else baseTime = 420;
 
   const standardWeight = 60;
   const adjustmentPerGram = 2;
@@ -59,16 +61,11 @@ function calculateBoilTime(weight, style) {
   return Math.max(0, adjustedTime);
 }
 
+// === NAMNPOPUP ===
 addButton.addEventListener("click", () => {
   eggNameInput.value = "";
   namePopup.classList.add("active");
-  eggNameInput.focus(); // vad är focus?
-});
-
-multipleEggsBox.addEventListener("click", () => {
-  if (eggs.length > 0) {
-    eggMenu.classList.add("active");
-  }
+  eggNameInput.focus();
 });
 
 cancelNameBtn.addEventListener("click", () => {
@@ -76,10 +73,10 @@ cancelNameBtn.addEventListener("click", () => {
 });
 
 saveNameBtn.addEventListener("click", () => {
-  const name = eggNameInput.value.trim() || "no name";
+  const name = eggNameInput.value.trim() || "No name";
   const weight = parseFloat(weightSlider.value);
   const style = styleValue.textContent;
-  const time = calculateBoilTime(weight, style);
+  const time = calculateBoilTime(weight, style) * 1000;
 
   eggs.push({ name, weight, style, time });
 
@@ -88,21 +85,23 @@ saveNameBtn.addEventListener("click", () => {
   renderEggList();
 });
 
+// === EGG MENY ===
+multipleEggsBox.addEventListener("click", () => {
+  if (eggs.length > 0) eggMenu.classList.add("active");
+});
+
 closeMenuBtn.addEventListener("click", () => {
   eggMenu.classList.remove("active");
 });
 
+// === VISA ÄGG I MENYN ===
 function renderEggList() {
   eggList.innerHTML = "";
   eggs.forEach((egg, index) => {
     const div = document.createElement("div");
     div.classList.add("egg-item");
 
-    const minutes = Math.floor(egg.time / 60);
-    const seconds = Math.floor(egg.time % 60)
-      .toString()
-      .padStart(2, "0");
-    const timeText = `${minutes}:${seconds}`;
+    const timeText = formatTime(egg.time);
 
     div.innerHTML = `
       <div class="egg-info">
@@ -127,11 +126,79 @@ function renderEggList() {
   });
 }
 
+// === TIMER START ===
+startButton.addEventListener("click", () => {
+  if (eggs.length === 0) {
+    alert("Du måste lägga till minst ett ägg först!");
+    return;
+  }
 
-const timerView = document.getElementById("timerView");
-const startBtn = document.querySelector(".start");
-
-startBtn.addEventListener("click", () => {
   document.getElementById("main").style.display = "none";
-  timerView.style.display = "block";
+  timerView.style.display = "flex";
+
+  const sortedEggs = [...eggs].sort((a, b) => a.time - b.time);
+  timerRunning = true;
+
+  updateTimerView(sortedEggs);
+  timerInterval = setInterval(() => {
+    if (!timerRunning) return;
+
+    sortedEggs.forEach((egg) => {
+      egg.time -= 100;
+      if (egg.time < 0) egg.time = 0;
+    });
+
+    updateTimerView(sortedEggs);
+
+    if (sortedEggs.every((e) => e.time === 0)) {
+      clearInterval(timerInterval);
+      alert("Alla ägg är färdiga! 🥚");
+    }
+  }, 100);
 });
+
+// === UPPDATERA TIMER VY ===
+function updateTimerView(sortedEggs) {
+  const next = sortedEggs.find((e) => e.time > 0);
+  if (next) {
+    nextEggName.textContent = next.name;
+    nextEggTime.textContent = formatTime(next.time);
+  } else {
+    nextEggName.textContent = "–";
+    nextEggTime.textContent = "00:00";
+  }
+
+  timerList.innerHTML = "";
+  sortedEggs.forEach((egg) => {
+    const item = document.createElement("div");
+    item.classList.add("timer-item");
+    item.innerHTML = `
+      <strong>${egg.name}</strong>
+      <span class="style-text">${egg.style}</span>
+      <span class="time-text">${formatTime(egg.time)}</span>
+    `;
+    timerList.appendChild(item);
+  });
+}
+
+// === PAUSA / STOPPA ===
+pauseTimerBtn.addEventListener("click", () => {
+  timerRunning = !timerRunning;
+  pauseTimerBtn.textContent = timerRunning ? "⏸" : "▶";
+});
+
+stopTimerBtn.addEventListener("click", () => {
+  clearInterval(timerInterval);
+  timerInterval = null;
+  timerRunning = false;
+  timerView.style.display = "none";
+  document.getElementById("main").style.display = "block";
+});
+
+// === FORMATERA TID ===
+function formatTime(ms) {
+  const totalSeconds = Math.ceil(ms / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+}
