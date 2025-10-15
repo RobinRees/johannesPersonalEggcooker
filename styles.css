@@ -1,3 +1,4 @@
+/* === Fonts === */
 .agbalumo-regular {
   font-family: "Agbalumo", system-ui;
   font-weight: 400;
@@ -12,7 +13,7 @@
 }
 
 body {
-  margin: 0px;
+  margin: 0;
   display: flex;
   justify-content: center;
 }
@@ -34,6 +35,8 @@ body {
   background-color: #b7a9f7;
   border-radius: 50%;
   text-align: center;
+  line-height: 50px;
+  font-weight: bold;
 }
 
 .control {
@@ -57,20 +60,22 @@ h1 {
   text-align: center;
 }
 
-.check,
+.start,
 .add {
   background-color: #b7a9f7;
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  border: none;
+  cursor: pointer;
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
-  background: #b7a9f7; /* färg på sliderbanan */
+  background: #b7a9f7;
 }
 
 input[type="range"]::-webkit-slider-thumb {
-  background: #b7a9f7; /* färg på "knoppen" */
+  background: #b7a9f7;
 }
 
 input[type="range"]::-moz-range-track {
@@ -81,13 +86,12 @@ input[type="range"]::-moz-range-thumb {
   background: #b7a9f7;
 }
 
-/* Menu */
-
-.egg-menu {
+/* === Meny === */
+#eggMenu {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: -100%; /* gömd från början */
+  bottom: -100%;
   background: white;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
@@ -98,11 +102,11 @@ input[type="range"]::-moz-range-thumb {
   transition: bottom 0.3s ease;
 }
 
-.egg-menu.active {
-  bottom: 0; /* glider upp */
+#eggMenu.active {
+  bottom: 0;
 }
 
-.menu-header {
+.menuHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -111,7 +115,7 @@ input[type="range"]::-moz-range-thumb {
   margin-bottom: 10px;
 }
 
-.close-btn {
+#closeMenu {
   background: none;
   border: none;
   font-size: 20px;
@@ -126,7 +130,7 @@ input[type="range"]::-moz-range-thumb {
   border-radius: 12px;
   padding: 10px 15px;
   margin-bottom: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .egg-info {
@@ -147,8 +151,8 @@ input[type="range"]::-moz-range-thumb {
   cursor: pointer;
 }
 
-
-.name-popup {
+/* === Popup === */
+#namePopup {
   position: fixed;
   top: 0;
   left: 0;
@@ -160,11 +164,11 @@ input[type="range"]::-moz-range-thumb {
   justify-content: center;
 }
 
-.name-popup.active {
+#namePopup.active {
   display: flex;
 }
 
-.popup-content {
+.popupContent {
   background: white;
   padding: 20px;
   border-radius: 12px;
@@ -173,7 +177,7 @@ input[type="range"]::-moz-range-thumb {
   text-align: center;
 }
 
-.popup-content input {
+.popupContent input {
   width: 100%;
   padding: 8px;
   margin: 10px 0;
@@ -183,13 +187,13 @@ input[type="range"]::-moz-range-thumb {
   text-align: center;
 }
 
-.popup-buttons {
+.popupButtons {
   display: flex;
   justify-content: space-between;
   gap: 10px;
 }
 
-.popup-buttons button {
+.popupButtons button {
   flex: 1;
   padding: 8px;
   border: none;
@@ -207,4 +211,67 @@ input[type="range"]::-moz-range-thumb {
   color: white;
 }
 
+#timerView {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.egg-timer-image img {
+  max-width: 200px;
+  width: 50%;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.next-up {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.next-up h2 {
+  font-family: "Agbalumo", system-ui;
+  font-size: 24px;
+  margin: 0;
+}
+
+#nextEggName {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+}
+
+#nextEggTime {
+  font-family: "Inter", sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.upcoming-eggs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 80%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.timer-controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.timer-controls button {
+  background: #b7a9f7;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
 

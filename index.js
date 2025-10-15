@@ -8,7 +8,7 @@ const multipleEggsBox = document.getElementById("multipleEggsBox");
 
 const eggMenu = document.getElementById("eggMenu");
 const closeMenuBtn = document.getElementById("closeMenu");
-const eggList = document.getAnimations("eggList");
+const eggList = document.getElementById("eggList");
 
 const namePopup = document.getElementById("namePopup");
 const eggNameInput = document.getElementById("eggNameInput");
@@ -39,19 +39,15 @@ styleSlider.addEventListener("input", () => {
   styleValue.textContent = styleText;
 });
 
-
 function calculateBoilTime(weight, style) {
   let baseTime;
   if (style === "softboiled") {
     baseTime = 240;
-  }
-  else if (style === "Medium") {
+  } else if (style === "Medium") {
     baseTime = 420;
-  }
-  else if (style === "Hardboiled") {
+  } else if (style === "Hardboiled") {
     baseTime = 600;
-  }
-  else {
+  } else {
     baseTime = 420;
   }
 
@@ -69,6 +65,12 @@ addButton.addEventListener("click", () => {
   eggNameInput.focus(); // vad är focus?
 });
 
+multipleEggsBox.addEventListener("click", () => {
+  if (eggs.length > 0) {
+    eggMenu.classList.add("active");
+  }
+});
+
 cancelNameBtn.addEventListener("click", () => {
   namePopup.classList.remove("active");
 });
@@ -81,10 +83,9 @@ saveNameBtn.addEventListener("click", () => {
 
   eggs.push({ name, weight, style, time });
 
-  multipleEggsBox.textContent ? `+${eggs.length}`;
+  multipleEggsBox.textContent = `+${eggs.length}`;
   namePopup.classList.remove("active");
   renderEggList();
-  eggMenu.classList.add("active");
 });
 
 closeMenuBtn.addEventListener("click", () => {
@@ -92,23 +93,31 @@ closeMenuBtn.addEventListener("click", () => {
 });
 
 function renderEggList() {
-  eggList.innerHtml = "";
+  eggList.innerHTML = "";
   eggs.forEach((egg, index) => {
     const div = document.createElement("div");
     div.classList.add("egg-item");
+
+    const minutes = Math.floor(egg.time / 60);
+    const seconds = Math.floor(egg.time % 60)
+      .toString()
+      .padStart(2, "0");
+    const timeText = `${minutes}:${seconds}`;
+
     div.innerHTML = `
       <div class="egg-info">
         <span class="egg-number">#${index + 1}</span>
         <strong>${egg.name}</strong>
         <span>${egg.weight}g</span>
         <span>${egg.style}</span>
+        <span>${timeText}</span>
       </div>
       <button class="trash-btn" data-index="${index}">🗑</button>
     `;
     eggList.appendChild(div);
   });
 
-  document.querySelectorAll(".trash-btn").forEach(btn => {
+  document.querySelectorAll(".trash-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const i = e.target.getAttribute("data-index");
       eggs.splice(i, 1);
@@ -117,3 +126,12 @@ function renderEggList() {
     });
   });
 }
+
+
+const timerView = document.getElementById("timerView");
+const startBtn = document.querySelector(".start");
+
+startBtn.addEventListener("click", () => {
+  document.getElementById("main").style.display = "none";
+  timerView.style.display = "block";
+});

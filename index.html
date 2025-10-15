@@ -11,14 +11,13 @@
       href="https://fonts.googleapis.com/css2?family=Agbalumo&display=swap"
       rel="stylesheet"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
+    <!-- === SETUP VY === -->
     <div id="main">
       <h1>Johannes Eggboiler</h1>
 
@@ -78,8 +77,31 @@
           </div>
         </div>
       </div>
-
-      <script src="index.js"></script>
     </div>
+
+    <!-- === TIMER VY === -->
+    <div id="timerView" style="display: none;">
+      <h1>Johannes Eggboiler</h1>
+      <div class="egg-timer-image">
+        <img src="Images/Egg.png" alt="Egg" />
+      </div>
+
+      <div class="next-up">
+        <h2>Näst på tur</h2>
+        <strong id="nextEggName">—</strong>
+        <div id="nextEggTime" class="time">00:00</div>
+      </div>
+
+      <div id="upcomingEggs" class="upcoming-eggs">
+        <!-- Kommande ägg läggs till här med JS -->
+      </div>
+
+      <div class="timer-controls">
+        <button id="stopBtn">✕</button>
+        <button id="pauseBtn">⏸</button>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
   </body>
 </html>
