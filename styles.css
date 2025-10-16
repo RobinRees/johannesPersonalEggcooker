@@ -11,7 +11,7 @@
   font-style: normal;
 }
 
-/* === Grundlayout === */
+
 body {
   margin: 0;
   display: flex;
@@ -19,7 +19,7 @@ body {
   background-color: #fff;
   color: #000;
   font-family: "Inter", sans-serif;
-  background-color: #ddd; /* fin bakgrund runt telefonen */
+  background-color: #ddd; 
 }
 
 h1,
@@ -36,7 +36,7 @@ label {
   padding: 20px;
 }
 
-/* === Äggbild på startskärmen === */
+
 #eggImage {
   margin: 20px auto;
   width: 180px;
@@ -64,7 +64,7 @@ label {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* === Kontroller === */
+
 .control {
   padding-top: 20px;
   text-align: center;
@@ -96,7 +96,7 @@ input[type="range"]::-moz-range-thumb {
   background: #b7a9f7;
 }
 
-/* === Start- & Add-knappar === */
+
 .buttons {
   padding-top: 20px;
   text-align: center;
@@ -121,7 +121,6 @@ input[type="range"]::-moz-range-thumb {
   color: #444;
 }
 
-/* === Meny (My eggs) === */
 #eggMenu {
   position: fixed;
   left: 0;
@@ -157,7 +156,7 @@ input[type="range"]::-moz-range-thumb {
   cursor: pointer;
 }
 
-/* === Ägg i listan === */
+
 .egg-item {
   display: flex;
   align-items: center;
@@ -188,7 +187,7 @@ input[type="range"]::-moz-range-thumb {
   cursor: pointer;
 }
 
-/* === Popup för namn === */
+
 #namePopup {
   position: fixed;
   top: 0;
@@ -248,7 +247,6 @@ input[type="range"]::-moz-range-thumb {
   color: white;
 }
 
-/* === Timer View === */
 #timerView {
   display: flex;
   flex-direction: column;
@@ -293,7 +291,6 @@ input[type="range"]::-moz-range-thumb {
   font-weight: bold;
 }
 
-/* === Timerlista === */
 #timerList {
   display: flex;
   flex-direction: column;
@@ -333,7 +330,6 @@ input[type="range"]::-moz-range-thumb {
   font-weight: bold;
 }
 
-/* === Timerkontroller === */
 .timer-controls {
   display: flex;
   justify-content: center;
@@ -352,7 +348,6 @@ input[type="range"]::-moz-range-thumb {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* === Telefonram === */
 .phone-frame {
   display: flex;
   justify-content: center;
@@ -363,8 +358,8 @@ input[type="range"]::-moz-range-thumb {
 
 .phone-screen {
   background: white;
-  width: 375px;                /* typisk iPhone-bredd */
-  height: 750px;               /* ungefärlig höjd */
+  width: 375px;                
+  height: 750px;               
   border-radius: 40px;
   box-shadow: 0 0 0 12px black;
   overflow: hidden;
@@ -373,7 +368,6 @@ input[type="range"]::-moz-range-thumb {
   flex-direction: column;
 }
 
-/* Notch */
 .phone-screen::before {
   content: "";
   position: absolute;
@@ -388,9 +382,9 @@ input[type="range"]::-moz-range-thumb {
   z-index: 2;
 }
 
-/* Innehåll */
+
 #main, #timerView {
-  padding-top: 60px; /* så inget hamnar i notch */
+  padding-top: 60px; 
   padding-bottom: 20px;
   flex: 1;
   overflow-y: auto;
@@ -403,7 +397,6 @@ input[type="range"]::-moz-range-thumb {
   margin-top: 20px;
 }
 
-/* Äggbild timer */
 .eggTimerImage img {
   max-width: 140px;
   width: 60%;
@@ -420,7 +413,6 @@ input[type="range"]::-moz-range-thumb {
   font-weight: bold;
 }
 
-/* Timerlista */
 #timerList {
   display: flex;
   flex-direction: column;
@@ -456,7 +448,6 @@ input[type="range"]::-moz-range-thumb {
   font-size: 16px;
 }
 
-/* Timerkontroller */
 .timer-controls {
   display: flex;
   justify-content: center;

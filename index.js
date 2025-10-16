@@ -15,7 +15,6 @@ const eggNameInput = document.getElementById("eggNameInput");
 const cancelNameBtn = document.getElementById("cancelName");
 const saveNameBtn = document.getElementById("saveName");
 
-// Timer view
 const timerView = document.getElementById("timerView");
 const timerList = document.getElementById("timerList");
 const pauseTimerBtn = document.getElementById("pauseTimer");
@@ -28,7 +27,7 @@ let eggs = [];
 let timerInterval = null;
 let timerRunning = false;
 
-// === SLIDERS ===
+
 weightSlider.addEventListener("input", () => {
   const value = parseFloat(weightSlider.value).toFixed(1);
   weightValue.textContent = `${value}g`;
@@ -45,7 +44,6 @@ styleSlider.addEventListener("input", () => {
   styleValue.textContent = styleText;
 });
 
-// === BERÄKNA KOKTID ===
 function calculateBoilTime(weight, style) {
   let baseTime;
   if (style === "Softboiled") baseTime = 240;
@@ -61,7 +59,6 @@ function calculateBoilTime(weight, style) {
   return Math.max(0, adjustedTime);
 }
 
-// === NAMNPOPUP ===
 addButton.addEventListener("click", () => {
   eggNameInput.value = "";
   namePopup.classList.add("active");
@@ -85,7 +82,7 @@ saveNameBtn.addEventListener("click", () => {
   renderEggList();
 });
 
-// === EGG MENY ===
+
 multipleEggsBox.addEventListener("click", () => {
   if (eggs.length > 0) eggMenu.classList.add("active");
 });
@@ -94,7 +91,6 @@ closeMenuBtn.addEventListener("click", () => {
   eggMenu.classList.remove("active");
 });
 
-// === VISA ÄGG I MENYN ===
 function renderEggList() {
   eggList.innerHTML = "";
   eggs.forEach((egg, index) => {
@@ -126,7 +122,6 @@ function renderEggList() {
   });
 }
 
-// === TIMER START ===
 startButton.addEventListener("click", () => {
   if (eggs.length === 0) {
     alert("Du måste lägga till minst ett ägg först!");
@@ -157,7 +152,6 @@ startButton.addEventListener("click", () => {
   }, 100);
 });
 
-// === UPPDATERA TIMER VY ===
 function updateTimerView(sortedEggs) {
   const next = sortedEggs.find((e) => e.time > 0);
   if (next) {
@@ -181,7 +175,6 @@ function updateTimerView(sortedEggs) {
   });
 }
 
-// === PAUSA / STOPPA ===
 pauseTimerBtn.addEventListener("click", () => {
   timerRunning = !timerRunning;
   pauseTimerBtn.textContent = timerRunning ? "⏸" : "▶";
@@ -195,7 +188,6 @@ stopTimerBtn.addEventListener("click", () => {
   document.getElementById("main").style.display = "block";
 });
 
-// === FORMATERA TID ===
 function formatTime(ms) {
   const totalSeconds = Math.ceil(ms / 1000);
   const minutes = Math.floor(totalSeconds / 60);
